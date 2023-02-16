@@ -1,14 +1,14 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "/common/plugins.json",
-    "description": "Plugin configurations\nhttps://ppoffice.github.io/hexo-theme-icarus/categories/Plugins/",
+    "description": "插件配置.\nhttps://ppoffice.github.io/hexo-theme-icarus/categories/Plugins/",
     "type": "object",
     "properties": {
         "animejs": {
-            "$ref": "/plugin/animejs.json"
+            "$ref": "/plugins/anime.json"
         },
         "back_to_top": {
-            "$ref": "/plugin/back_to_top.json"
+            "$ref": "/plugins/back-to-top.json"
         },
         "baidu_analytics": {
             "$ref": "/plugin/baidu_analytics.json"

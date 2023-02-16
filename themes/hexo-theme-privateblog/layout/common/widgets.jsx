@@ -19,21 +19,56 @@ function formatWidgets(widgets) {
     return result;
 }
 
-function hasColumn(widgets, position, config, page) {
-    const showToc = (config.toc === true) && ['page', 'post'].includes(page.layout);
+function clone(Obj){
+    var buf;
+    if(Obj instanceof Array){
+        buf=[];
+        var i=Obj.length;
+        while(i--){
+            buf[i]=clone(Obj[i]);
+        }
+        return buf;
+    }
+    else if(Obj instanceof Object){
+        buf={};
+        for(var k in Obj){
+            buf[k]=clone(Obj[k]);
+        }
+        return buf;
+    }else{
+        return Obj;
+    }
+}
+
+function formatAllWidgets(widgets) {
+    const result = {};
     if (Array.isArray(widgets)) {
-        return typeof widgets.find(widget => {
-            if (widget.type === 'toc' && !showToc) {
-                return false;
+        widgets.filter(widget => typeof widget === 'object').forEach(widget => {
+            if ('position' in widget && (widget.position === 'left' || widget.position === 'right')) {
+                var widgetNew = clone(widget);
+                if(widgetNew.position === 'right'){
+                    widgetNew.position = 'left';
+                }
+                if (!(widgetNew.position in result)) {
+                    result[widgetNew.position] = [widgetNew];
+                } else {
+                    result[widgetNew.position].push(widgetNew);
+                }
             }
-            return widget.position === position;
-        }) !== 'undefined';
+        });
+    }
+    return result;
+}
+
+function hasColumn(widgets, position) {
+    if (Array.isArray(widgets)) {
+        return typeof widgets.find(widget => widget.position === position) !== 'undefined';
     }
     return false;
 }
 
-function getColumnCount(widgets, config, page) {
-    return [hasColumn(widgets, 'left', config, page), hasColumn(widgets, 'right', config, page)].filter(v => !!v).length + 1;
+function getColumnCount(widgets) {
+    return [hasColumn(widgets, 'left'), hasColumn(widgets, 'right')].filter(v => !!v).length + 1;
 }
 
 function getColumnSizeClass(columnCount) {
@@ -66,8 +101,8 @@ function isColumnSticky(config, position) {
 class Widgets extends Component {
     render() {
         const { site, config, helper, page, position } = this.props;
-        const widgets = formatWidgets(config.widgets)[position] || [];
-        const columnCount = getColumnCount(config.widgets, config, page);
+        const widgets = (page.layout == 'post' || page.layout == 'page') ? formatAllWidgets(config.widgets)[position] || [] : formatWidgets(config.widgets)[position] || [];
+        const columnCount = getColumnCount(config.widgets);
 
         if (!widgets.length) {
             return null;
@@ -95,7 +130,9 @@ class Widgets extends Component {
                 }
                 return null;
             })}
-            {position === 'left' && hasColumn(config.widgets, 'right', config, page) ? <div class={classname({
+
+            {/*此处放开可以在非桌面设备上并且非文章情况下展示right widget,否则不展示*/}
+            {position === 'left' && hasColumn(config.widgets, 'right') ? <div class={classname({
                 'column-right-shadow': true,
                 'is-hidden-widescreen': true,
                 'is-sticky': isColumnSticky(config, 'right')

@@ -1,0 +1,15 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "/widgets/recommend-post.json",
+    "description": "最新的文章推荐小部件配置",
+    "type": "object",
+    "properties": {
+        "type": {
+            "type": "string",
+            "const": "recommend_post"
+        }
+    },
+    "required": [
+        "type"
+    ]
+}

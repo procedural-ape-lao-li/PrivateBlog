@@ -31,13 +31,17 @@ function getPageTitle(page, siteTitle, helper) {
 module.exports = class extends Component {
     render() {
         const { site, config, helper, page } = this.props;
-        const { url_for, cdn, fontcdn, iconcdn, is_post } = helper;
+        const { url_for, cdn, fontcdn, iconcdn, is_post, my_cdn } = helper;
         const {
             url,
             head = {},
             article,
             highlight,
-            variant = 'default'
+            variant = 'default',
+            adsense_client_id,
+            has_live_2D_switch,
+            global_gray,
+            comment
         } = config;
         const {
             meta = [],
@@ -48,8 +52,6 @@ module.exports = class extends Component {
             rss,
             favicon
         } = head;
-
-        const noIndex = helper.is_archive() || helper.is_category() || helper.is_tag();
 
         const language = page.lang || page.language || config.language;
         const fontCssUrl = {
@@ -86,11 +88,8 @@ module.exports = class extends Component {
         }
 
         let adsenseClientId = null;
-        if (Array.isArray(config.widgets)) {
-            const widget = config.widgets.find(widget => widget.type === 'adsense');
-            if (widget) {
-                adsenseClientId = widget.client_id;
-            }
+        if (adsense_client_id) {
+            adsenseClientId = adsense_client_id;
         }
 
         let openGraphImages = images;
@@ -109,18 +108,13 @@ module.exports = class extends Component {
             structuredImages = page.photos;
         }
 
-        let followItVerificationCode = null;
-        if (Array.isArray(config.widgets)) {
-            const widget = config.widgets.find(widget => widget.type === 'followit');
-            if (widget) {
-                followItVerificationCode = widget.verification_code;
-            }
-        }
+        var hasLive2D = has_live_2D_switch == undefined || has_live_2D_switch;
+        var globalGray = global_gray != undefined && global_gray;
+        const isValineComment = comment != undefined && comment.type != undefined && comment.type == 'valine';
 
         return <head>
             <meta charset="utf-8" />
             <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-            {noIndex ? <meta name="robots" content="noindex" /> : null}
             {meta && meta.length ? <MetaTags meta={meta} /> : null}
 
             <title>{getPageTitle(page, config.title, helper)}</title>
@@ -152,12 +146,10 @@ module.exports = class extends Component {
                 facebookAppId={open_graph.fb_app_id} /> : null}
 
             {typeof structured_data === 'object' && structured_data !== null ? <StructuredData
-                title={structured_data.title || page.title || config.title}
+                title={structured_data.title || config.title}
                 description={structured_data.description || page.description || page.excerpt || page.content || config.description}
                 url={structured_data.url || page.permalink || url}
                 author={structured_data.author || config.author}
-                publisher={structured_data.publisher || config.title}
-                publisherLogo={structured_data.publisher_logo || config.logo}
                 date={page.date}
                 updated={page.updated}
                 images={structuredImages} /> : null}
@@ -165,16 +157,28 @@ module.exports = class extends Component {
             {canonical_url ? <link rel="canonical" href={canonical_url} /> : null}
             {rss ? <link rel="alternate" href={url_for(rss)} title={config.title} type="application/atom+xml" /> : null}
             {favicon ? <link rel="icon" href={url_for(favicon)} /> : null}
+            {/*fix chrome busuanzi issue*/}
+            <meta name="referrer" content="no-referrer-when-downgrade" />
             <link rel="stylesheet" href={iconcdn()} />
             {hlTheme ? <link rel="stylesheet" href={cdn('highlight.js', '9.12.0', 'styles/' + hlTheme + '.css')} /> : null}
             <link rel="stylesheet" href={fontCssUrl[variant]} />
             <link rel="stylesheet" href={url_for('/css/' + variant + '.css')} />
+            {/*icon*/}
+            <link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/font-awesome/5.12.0/css/all.min.css"/>
+            <link rel="stylesheet" href={fontcdn('Ubuntu:400,600|Source+Code+Pro|Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Microsoft YaHei:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&amp;subset=latin,latin-ext|Inconsolata|Itim|Lobster.css')} />
+            {globalGray ? <link rel="stylesheet" href={url_for('/css/global_gray.css')} /> : null}
+            <script src={cdn('jquery', '3.3.1', 'dist/jquery.min.js')}></script>
+            <script src={my_cdn(url_for('/js/globalUtils.js'))}></script>
             <Plugins site={site} config={config} helper={helper} page={page} head={true} />
 
             {adsenseClientId ? <script data-ad-client={adsenseClientId}
                 src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" async></script> : null}
+            {hasLive2D ? <link rel="stylesheet" href={my_cdn(url_for('/live2d/waifu.css'))} /> : null}
+            {hasLive2D ? <script type="text/javascript" async={true} src={my_cdn(url_for('/live2d/autoload.js'))}></script> : null}
+            {isValineComment ? <script async="" referrerpolicy="no-referrer" src="//cdn.jsdelivr.net/npm/leancloud-storage@3/dist/av-min.js"></script> : null}
+            {isValineComment ? <script src="//unpkg.com/valine/dist/Valine.min.js"></script> : null}
+            {isValineComment ? <script src={my_cdn(url_for('/js/md5.min.js'))}></script> : null}
 
-            {followItVerificationCode ? <meta name="follow.it-verification-code" content={followItVerificationCode} /> : null}
         </head>;
     }
 };
