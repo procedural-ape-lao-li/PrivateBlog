@@ -1,28 +1,28 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "/common/article.json",
-    "description": "文章相关的配置.",
+    "description": "Article related configurations",
     "type": "object",
     "properties": {
         "highlight": {
             "type": "object",
-            "description": "代码高亮显示设置.",
+            "description": "Code highlight settings",
             "properties": {
                 "theme": {
                     "type": "string",
-                    "description": "代码高亮显示主题 \n https://github.com/highlightjs/highlight.js/tree/master/src/styles",
+                    "description": "Code highlight themes\nhttps://github.com/highlightjs/highlight.js/tree/master/src/styles",
                     "default": "atom-one-light",
                     "nullable": true
                 },
                 "clipboard": {
                     "type": "boolean",
-                    "description": "显示复代码按钮.",
+                    "description": "Show copy code button",
                     "default": true,
                     "nullable": true
                 },
                 "fold": {
                     "type": "string",
-                    "description": "代码块的默认折叠状态。 可以 \"\", \"folded\", \"unfolded\"",
+                    "description": "Default folding status of the code blocks. Can be \"\", \"folded\", \"unfolded\"",
                     "enum": [
                         "",
                         "folded",
@@ -36,27 +36,36 @@
         },
         "readtime": {
             "type": "boolean",
-            "description": "是否显示预估文章阅读时间 .",
+            "description": "Whether to show estimated article reading time",
             "default": true,
+            "nullable": true
+        },
+        "update_time": {
+            "type": ["boolean", "string"],
+            "description": "Whether to show updated time. For \"auto\", shows article update time only when page.updated is set and it is different from page.date",
+            "default": true,
+            "enum": [true, false, "auto"],
             "nullable": true
         },
         "licenses": {
             "$ref": "/misc/poly_links.json",
-            "description": "许可条街区.",
-            "examples": [{
-                "Creative Commons": {
-                    "icon": "fab fa-creative-commons",
-                    "url": "https://creativecommons.org/"
-                },
-                "Attribution": {
-                    "icon": "fab fa-creative-commons-by",
-                    "url": "https://creativecommons.org/licenses/by/4.0/"
-                },
-                "Noncommercial": {
-                    "icon": "fab fa-creative-commons-nc",
-                    "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+            "description": "Article licensing block",
+            "examples": [
+                {
+                    "Creative Commons": {
+                      "icon": "fab fa-creative-commons",
+                      "url": "https://creativecommons.org/"
+                    },
+                    "Attribution": {
+                      "icon": "fab fa-creative-commons-by",
+                      "url": "https://creativecommons.org/licenses/by/4.0/"
+                    },
+                    "Noncommercial": {
+                      "icon": "fab fa-creative-commons-nc",
+                      "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+                    }
                 }
-            }]
+            ]
         }
     }
 }

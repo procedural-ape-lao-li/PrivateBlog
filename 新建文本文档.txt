@@ -1,0 +1,14 @@
+$ hexo init
+$ git clone https://github.com/ppoffice/hexo-theme-icarus.git themes/icarus
+$ npm install --save hexo-pagination@^2.0.0
+
+
+hexo clean
+hexo g
+hexo s
+
+修改样式名称
+package.json
+package-lock.json
+\themes\hexo-theme-privateblog\package.json
+\themes\hexo-theme-privateblog\_config.yml

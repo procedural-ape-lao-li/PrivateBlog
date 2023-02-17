@@ -1,5 +1,5 @@
 /* ---------------------------------
- *       返回顶部按钮
+ *        Back to Top Button
  * --------------------------------- */
 #back-to-top
     position: fixed
@@ -21,43 +21,14 @@
         transform: translateY(0)
 
 /* ---------------------------------
- *          画廊插件
+ *          Gallery Plugin
  * --------------------------------- */
 .gallery-item
     .caption
         color: $grey
 
 /* ---------------------------------
- *     内容表小部件
- * --------------------------------- */
-+mobile()
-    #toc
-        display: none
-        position: fixed
-        margin: 1rem
-        left: 0
-        right: 0
-        bottom: 0
-        z-index: 100
-        max-height: calc(100vh - 2rem)
-        overflow-y: auto
-
-    #toc-mask
-        display: none
-        position: fixed
-        top: 0
-        left: 0
-        right: 0
-        bottom: 0
-        z-index: 99
-        background: rgba(0, 0, 0, .7)
-
-    #toc, #toc-mask
-        &.is-active
-            display: block
-
-/* ---------------------------------
- *     页面加载进度条
+ *      Page Loading Progressbar
  * --------------------------------- */
 .pace
     user-select: none
@@ -84,7 +55,7 @@
 /* ---------------------------------
  *       MathJax and KaTeX
  * --------------------------------- */
-.MathJax, .katex-display
+.MathJax, .MathJax_Display, .MJXc-display, .MathJax_SVG_Display, .katex-display
     overflow-x: auto
     overflow-y: hidden
 

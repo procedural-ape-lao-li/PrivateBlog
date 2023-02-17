@@ -1,17 +1,17 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "/config.json",
-    "description": "配置文件定义",
+    "description": "The configuration file definition",
     "type": "object",
     "properties": {
         "version": {
             "type": "string",
-            "description": "配置文件的版本",
-            "default": "4.0.0"
+            "description": "Version of the configuration file",
+            "default": "5.1.0"
         },
         "variant": {
             "type": "string",
-            "description": "Icarus 主题变体，可以 \"default\" or \"cyberpunk\"",
+            "description": "Icarus theme variant, can be \"default\" or \"cyberpunk\"",
             "enum": [
                 "default",
                 "cyberpunk"
@@ -23,12 +23,12 @@
                 "string",
                 "object"
             ],
-            "description": "网站标识的路径或URL",
+            "description": "Path or URL to the website's logo",
             "default": "/img/logo.svg",
             "properties": {
                 "text": {
                     "type": "string",
-                    "description": "文字将显示在标识图像的地方"
+                    "description": "Text to be shown in place of the logo image"
                 }
             },
             "required": [

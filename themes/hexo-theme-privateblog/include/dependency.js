@@ -2,7 +2,7 @@
 const semver = require('semver');
 const logger = require('hexo-log')();
 const packageInfo = require('../package.json');
-const { yellow, red, green } = require('./Util/Console');
+const { yellow, red, green } = require('./util/console');
 
 module.exports = hexo => {
     function checkDependency(name, reqVer) {
@@ -21,7 +21,7 @@ module.exports = hexo => {
     }
 
     logger.info('=== Checking package dependencies ===');
-    const dependencies = Object.assign({}, packageInfo.peerDependencies, packageInfo.dependencies);
+    const dependencies = Object.assign({}, packageInfo.dependencies);
     const missingDeps = Object.keys(dependencies)
         .filter(name => !checkDependency(name, dependencies[name]));
     if (missingDeps && missingDeps.length) {

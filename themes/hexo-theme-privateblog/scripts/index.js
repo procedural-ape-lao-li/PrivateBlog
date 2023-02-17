@@ -2,7 +2,7 @@
 const logger = require('hexo-log')();
 
 /**
- * 打印欢迎消息
+ * Print welcome message
  */
 logger.info(`=======================================
  ██╗ ██████╗ █████╗ ██████╗ ██╗   ██╗███████╗
@@ -14,16 +14,16 @@ logger.info(`=======================================
 =============================================`);
 
 /**
- * 检查是否安装了所有依赖项
+ * Check if all dependencies are installed
  */
 require('../include/dependency')(hexo);
 
 /**
- * 配置文件检查和迁移
+ * Configuration file checking and migration
  */
 require('../include/config')(hexo);
 
 /**
- * 注册十六进制扩展并删除可能导致OOM的十六进制过滤器  
+ * Register Hexo extensions and remove Hexo filters that could cause OOM
  */
 require('../include/register')(hexo);

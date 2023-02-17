@@ -39,8 +39,8 @@ class Navbar extends Component {
             navbarLogo = siteTitle;
         }
 
-        return <nav class="navbar navbar-main is-fixed-top">
-            <div class="container">
+        return <nav class="navbar navbar-main">
+            <div class="container navbar-container">
                 <div class="navbar-brand justify-content-center">
                     <a class="navbar-item navbar-logo" href={siteUrl}>
                         {navbarLogo}
@@ -68,9 +68,6 @@ class Navbar extends Component {
                         {showSearch ? <a class="navbar-item search" title={searchTitle} href="javascript:;">
                             <i class="fas fa-search"></i>
                         </a> : null}
-                        <a class="navbar-item" id="night-nav" title="Night Mode" href="javascript:;">
-                            <i class="fas fa-moon" id="night-icon"></i>
-                        </a>
                     </div>
                 </div>
             </div>

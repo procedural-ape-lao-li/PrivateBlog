@@ -7,7 +7,7 @@ class Profile extends Component {
         if (!links.length) {
             return null;
         }
-        return <div class="level is-mobile">
+        return <div class="level is-mobile is-multiline">
             {links.filter(link => typeof link === 'object').map(link => {
                 return <a class="level-item button is-transparent is-marginless"
                     target="_blank" rel="noopener" title={link.name} href={link.url}>
@@ -27,21 +27,8 @@ class Profile extends Component {
             counter,
             followLink,
             followTitle,
-            socialLinks,
-            hasHitokoto,
-            hitokotoFrom,
-            hitokotoProvider
+            socialLinks
         } = this.props;
-
-        const hitokotoJs = `function getYiyan(){
-                                $.getJSON("https://v1.hitokoto.cn/", function (data) {
-                                if(data){
-                                    $('#hitokoto').html("");
-                                    $('#hitokoto').append("<strong style='color: #3273dc;'>"+data.hitokoto+"</strong>"+
-                                    "<p>"+"${hitokotoFrom}《"+data.from+"》</p><p>${hitokotoProvider}-"+data.creator+"</p>");
-                                }});}
-                                $(function (){getYiyan();$('#hitokoto').click(function(){getYiyan();})});`;
-
         return <div class="card widget" data-type="profile">
             <div class="card-content">
                 <nav class="level">
@@ -89,12 +76,6 @@ class Profile extends Component {
                     <a class="level-item button is-primary is-rounded" href={followLink} target="_blank" rel="noopener">{followTitle}</a>
                 </div> : null}
                 {socialLinks ? this.renderSocialLinks(socialLinks) : null}
-                {hasHitokoto == undefined || hasHitokoto ? <div>
-                    <hr />
-                    <p id="hitokoto">:D 一言句子获取中...</p>
-                    <script type="text/javascript" dangerouslySetInnerHTML={{ __html: hitokotoJs }} defer={true}></script>
-                </div> : null}
-
             </div>
         </div>;
     }
@@ -110,8 +91,7 @@ Profile.Cacheable = cacheComponent(Profile, 'widget.profile', props => {
         author_title,
         location,
         follow_link,
-        social_links,
-        has_hitokoto
+        social_links
     } = widget;
     const { url_for, _p, __ } = helper;
 
@@ -167,12 +147,9 @@ Profile.Cacheable = cacheComponent(Profile, 'widget.profile', props => {
                 url: url_for('/tags')
             }
         },
-        followLink: url_for(follow_link),
+        followLink: follow_link ? url_for(follow_link) : undefined,
         followTitle: __('widget.follow'),
-        socialLinks,
-        hitokotoFrom: __('widget.hitokoto_from'),
-        hitokotoProvider: __('widget.hitokoto_provider'),
-        hasHitokoto: has_hitokoto
+        socialLinks
     };
 });
 

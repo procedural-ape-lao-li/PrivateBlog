@@ -1,27 +1,27 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "/common/sidebar.json",
-    "description": "侧边栏的配置, 请注意,  只有当它至少有一个小部件时, 侧边栏才可见.",
+    "description": "Sidebar configurations.\nPlease be noted that a sidebar is only visible when it has at least one widget",
     "type": "object",
     "properties": {
         "left": {
             "type": "object",
-            "description": "左栏的配置",
+            "description": "Left sidebar configurations",
             "properties": {
                 "sticky": {
                     "type": "boolean",
-                    "description": "当页面滚动时，侧边栏是否保持在顶部",
+                    "description": "Whether the sidebar sticks to the top when page scrolls",
                     "default": false
                 }
             }
         },
         "right": {
             "type": "object",
-            "description": "右栏的配置",
+            "description": "Right sidebar configurations",
             "properties": {
                 "sticky": {
                     "type": "boolean",
-                    "description": "当页面滚动时，侧边栏是否保持在顶部",
+                    "description": "Whether the sidebar sticks to the top when page scrolls",
                     "default": false
                 }
             }

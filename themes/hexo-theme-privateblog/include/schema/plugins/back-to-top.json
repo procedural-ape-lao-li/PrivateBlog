@@ -1,7 +1,0 @@
-{
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "/plugins/back-to-top.json",
-    "description": "显示回到顶部按钮",
-    "type": "boolean",
-    "default": true
-}
