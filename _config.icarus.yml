@@ -203,12 +203,14 @@ donates:
         type: wechat
         # Wechat qrcode image URL
         qrcode: ''
+
 # Share plugin configurations
 # https://ppoffice.github.io/hexo-theme-icarus/categories/Plugins/Share/
 share:
     type: sharethis
     # URL to the ShareThis share plugin script
     install_url: ''
+
 # Sidebar configurations.
 # Please be noted that a sidebar is only visible when it has at least one widget
 sidebar:
@@ -220,6 +222,7 @@ sidebar:
     right:
         # Whether the sidebar sticks to the top when page scrolls
         sticky: false
+
 # Sidebar widget configurations
 # http://ppoffice.github.io/hexo-theme-icarus/categories/Widgets/
 widgets:
@@ -229,11 +232,11 @@ widgets:
         position: left
         type: profile
         # Author name
-        author: Your name
+        author: 程序猿老李
         # Author title
-        author_title: Your title
+        author_title: 笑口常开，笑世间可笑之人
         # Author's current location
-        location: Your location
+        location: 太阳系第三行星
         # URL or path to the avatar image
         avatar: 
         # Whether show the rounded avatar image
@@ -259,41 +262,25 @@ widgets:
             RSS:
                 icon: fas fa-rss
                 url: /
-    # Table of contents widget configurations
-    -
-        # Where should the widget be placed, left sidebar or right sidebar
-        position: left
-        type: toc
-        # Whether to show the index of each heading
-        index: true
-        # Whether to collapse sub-headings when they are out-of-view
-        collapsed: true
-        # Maximum level of headings to show (1-6)
-        depth: 3
-    # Recommendation links widget configurations
-    -
-        # Where should the widget be placed, left sidebar or right sidebar
-        position: left
-        type: links
-        # Names and URLs of the sites
-        links:
-            Hexo: https://hexo.io
-            Bulma: https://bulma.io
+
     # Categories widget configurations
     -
         # Where should the widget be placed, left sidebar or right sidebar
-        position: left
+        position: right
         type: categories
+
     # Recent posts widget configurations
     -
         # Where should the widget be placed, left sidebar or right sidebar
-        position: left
+        position: right
         type: recent_posts
+
     # Archives widget configurations
     -
         # Where should the widget be placed, left sidebar or right sidebar
         position: left
         type: archives
+
     # Tags widget configurations
     -
         # Where should the widget be placed, left sidebar or right sidebar
@@ -305,28 +292,53 @@ widgets:
         amount: 
         # Whether to show tags count, i.e. number of posts in the tag.
         show_count: true
-    # Google FeedBurner email subscription widget configurations
+
+    # Table of contents widget configurations
     -
         # Where should the widget be placed, left sidebar or right sidebar
-        position: left
-        type: subscribe_email
-        # Hint text under the email input
-        description: 
-        # Feedburner ID
-        feedburner_id: ''
+        position: right
+        type: toc
+        # Whether to show the index of each heading
+        index: true
+        # Whether to collapse sub-headings when they are out-of-view
+        collapsed: true
+        # Maximum level of headings to show (1-6)
+        depth: 3
+
+    # Recommendation links widget configurations
+    -
+        # Where should the widget be placed, left sidebar or right sidebar
+        position: right
+        type: links
+        # Names and URLs of the sites
+        links:
+            Hexo: https://hexo.io
+            Bulma: https://bulma.io
+
     # Google AdSense unit configurations
     -
         # Where should the widget be placed, left sidebar or right sidebar
-        position: left
+        position: right
         type: adsense
         # AdSense client ID
         client_id: ''
         # AdSense AD unit ID
         slot_id: ''
+
+    # Google FeedBurner email subscription widget configurations
+    -
+        # Where should the widget be placed, left sidebar or right sidebar
+        position: right
+        type: subscribe_email
+        # Hint text under the email input
+        description: 
+        # Feedburner ID
+        feedburner_id: ''
+
     # Follow.it email subscription widget configurations
     -
         # Where should the widget be placed, left sidebar or right sidebar
-        position: left
+        position: right
         type: followit
         # Hint text under the email input
         description: 
@@ -334,6 +346,7 @@ widgets:
         action_url: ''
         # Feed claiming verification code
         verification_code: ''
+
 # Plugin configurations
 # https://ppoffice.github.io/hexo-theme-icarus/categories/Plugins/
 plugins:
