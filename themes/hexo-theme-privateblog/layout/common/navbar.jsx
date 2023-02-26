@@ -62,6 +62,9 @@ class Navbar extends Component {
                                 </a>;
                             })}
                         </Fragment> : null}
+                        <a class="navbar-item night" id="night-nav" title="Night Mode" href="javascript:;">
+                            <i class="fas fa-moon" id="night-icon"></i>
+                        </a>
                         {showToc ? <a class="navbar-item is-hidden-tablet catalogue" title={tocTitle} href="javascript:;">
                             <i class="fas fa-list-ul"></i>
                         </a> : null}
