@@ -104,12 +104,22 @@ head:
 # Page top navigation bar configurations
 navbar:
     # Navigation menu items
+    # menu:
+    #     Home: /
+    #     Archives: /archives
+    #     Categories: /categories
+    #     Tags: /tags
+    #     Comments: /tags
+    #     Friends: /tags
+    #     About: /about
     menu:
-        Home: /
-        Archives: /archives
-        Categories: /categories
-        Tags: /tags
-        About: /about
+        首页: /
+        归档: /archives
+        分类: /categories
+        标签: /tags
+        留言: /tags
+        友链: /tags
+        关于: /about
     # Links to be shown on the right of the navigation bar
     links:
         Download on GitHub:
@@ -226,7 +236,7 @@ sidebar:
 # Sidebar widget configurations
 # http://ppoffice.github.io/hexo-theme-icarus/categories/Widgets/
 widgets:
-    # Profile widget configurations
+    # 介绍小部件配置
     -
         # Where should the widget be placed, left sidebar or right sidebar
         position: left
