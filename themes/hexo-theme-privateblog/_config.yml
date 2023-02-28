@@ -273,18 +273,6 @@ widgets:
                 icon: fas fa-rss
                 url: /
 
-    # Categories widget configurations
-    -
-        # Where should the widget be placed, left sidebar or right sidebar
-        position: right
-        type: categories
-
-    # Recent posts widget configurations
-    -
-        # Where should the widget be placed, left sidebar or right sidebar
-        position: right
-        type: recent_posts
-
     # Archives widget configurations
     -
         # Where should the widget be placed, left sidebar or right sidebar
@@ -302,6 +290,18 @@ widgets:
         amount: 
         # Whether to show tags count, i.e. number of posts in the tag.
         show_count: true
+        
+    # 最近的帖子小部件配置
+    -
+        # Where should the widget be placed, left sidebar or right sidebar
+        position: right
+        type: recent_posts
+
+    # 类别小部件配置
+    -
+        # Where should the widget be placed, left sidebar or right sidebar
+        position: right
+        type: categories
 
     # Table of contents widget configurations
     -
