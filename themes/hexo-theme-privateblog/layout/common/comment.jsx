@@ -1,3 +1,4 @@
+// 评论
 const logger = require('hexo-log')();
 const { Component } = require('inferno');
 const view = require('hexo-component-inferno/lib/core/view');

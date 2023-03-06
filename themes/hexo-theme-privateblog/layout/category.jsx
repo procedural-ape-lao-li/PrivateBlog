@@ -1,3 +1,4 @@
+// 分类
 const { Component, Fragment } = require('inferno');
 const Index = require('./index');
 

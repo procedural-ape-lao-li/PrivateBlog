@@ -82,15 +82,19 @@ class Widgets extends Component {
             'is-sticky': isColumnSticky(config, position)
         })}>
             {widgets.map(widget => {
-                // widget type is not defined
-                if (!widget.type) {
+                // 小部件类型没有定义
+                if (!widget.type) 
+                {
                     return null;
                 }
-                try {
+                try 
+                {
                     let Widget = view.require('widget/' + widget.type);
                     Widget = Widget.Cacheable ? Widget.Cacheable : Widget;
                     return <Widget site={site} helper={helper} config={config} page={page} widget={widget} />;
-                } catch (e) {
+                } 
+                catch (e) 
+                {
                     logger.w(`Icarus cannot load widget "${widget.type}"`);
                 }
                 return null;

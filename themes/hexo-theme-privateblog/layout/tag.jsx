@@ -1,3 +1,4 @@
+// 标签
 const { Component, Fragment } = require('inferno');
 const Index = require('./index');
 

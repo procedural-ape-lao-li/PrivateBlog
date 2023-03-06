@@ -1,3 +1,4 @@
+// 个人信息
 const { Component } = require('inferno');
 const gravatrHelper = require('hexo-util').gravatar;
 const { cacheComponent } = require('hexo-component-inferno/lib/util/cache');

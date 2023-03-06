@@ -1,3 +1,4 @@
+// 归档
 const moment = require('moment');
 const { Component, Fragment } = require('inferno');
 const { toMomentLocale } = require('hexo/lib/plugins/helper/date');
