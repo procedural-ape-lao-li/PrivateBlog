@@ -1,3 +1,9 @@
+---
+title: UE4-C++ 变量类型转换
+date: 2019-07-11 17:00:00
+tags: [UE4-C++]
+categories: [UE4]
+---
 
 FString 转 Int 
 
@@ -7,6 +13,8 @@ Int 转 FString:
 
 	FString StrVal = FString::FromInt(IntVal);
 
+<!-- more -->
+
 FString 转 Float
 
 	float FloatVal = FCString::Atof(*StrVal);  
@@ -14,6 +22,14 @@ FString 转 Float
 Float 转 FString
 
 	FString StrVal = FString::SanitizeFloat(FloatVal);  
+
+FString To double
+
+	FCString::Atod(*StrVal);
+
+double To FString
+
+	FString StrVal = FString::Printf(TEXT("%.15f"), DoubleVal);
 
 FString 转 FText
 
@@ -31,13 +47,6 @@ FName 转 FString
 
 	FString StrVal = NameVal.ToString();
 
-FString 转 TCHAR*
-
-	TCHAR CharVal = *StrVal;
-
-TCHAR* 转 FString
-
-
 FString 转 std::string
 
 	std::string std::strVal(TCHAR_TO_UTF8(*StrVal));
@@ -45,6 +54,18 @@ FString 转 std::string
 std::string 转 FString
 
 	FString StrVal(std::strVal.c_str());
+
+FString 转 TCHAR*
+
+	TCHAR CharVal = *StrVal;
+
+FString To const char*
+
+	const char* Val = TCHAR_TO_ANSI(*StrVal);
+
+FString To bool
+
+	bool bVal = StrVal.ToBool();
 
 注：
 	
@@ -55,3 +76,13 @@ std::string 转 FString
 	FName 转 FText
 
 	TextVal = FText::FromName(NameVal);
+
+TChar* 与 char* 的互相转换
+
+	TCHAR_TO_ANSI(*StrVal)
+
+	ANSI_TO_TCHAR(*StrVal)  
+
+	TCHAR_TO_UTF8(*StrVal) 
+ 
+	UTF8_TO_TCHAR(*StrVal)
