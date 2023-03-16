@@ -1,6 +1,6 @@
 ---
 title: Hello World
-date: 2023-02-28 15:00:00
+date: 0000-00-00 00:00:00
 tags: [Hello World]
 categories: [Hello World]
 ---

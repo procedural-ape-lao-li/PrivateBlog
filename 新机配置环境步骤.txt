@@ -1,3 +1,8 @@
+安装 Git 
+安装 Node.js
+
+安装 npm install hexo-cli g
+
 $ hexo init
 $ git clone https://github.com/ppoffice/hexo-theme-icarus.git themes/icarus
 $ npm install --save hexo-pagination@^2.0.0
