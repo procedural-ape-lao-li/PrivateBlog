@@ -102,4 +102,11 @@ theme: hexo-theme-privateblog
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
-  type: ''
+- type: git
+  repo: git@github.com:procedural-ape-lao-li/procedural-ape-lao-li.github.io.git
+  branch: master
+  message: UpdateBlog
+- type: git
+  repo: git@gitee.com:procedural-ape-lao-li/procedural-ape-lao-li.git
+  branch: master
+  message: UpdateBlog
