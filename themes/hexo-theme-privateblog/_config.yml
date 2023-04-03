@@ -272,6 +272,7 @@ widgets:
             RSS:
                 icon: fas fa-rss
                 url: /
+        has_hitokoto: true
 
     # 归档小部件配置
     -
