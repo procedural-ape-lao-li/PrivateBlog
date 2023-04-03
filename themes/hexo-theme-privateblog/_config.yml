@@ -273,7 +273,7 @@ widgets:
                 icon: fas fa-rss
                 url: /
 
-    # Archives widget configurations
+    # 归档小部件配置
     -
         # 小部件应该放在哪里，左边栏还是右边栏
         position: left
