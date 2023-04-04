@@ -29,20 +29,8 @@ class Profile extends Component {
             followLink,
             followTitle,
             socialLinks,
-            hasHitokoto,
-            hitokotoFrom,
-            hitokotoProvider
+            hasHitokoto
         } = this.props;
-
-        {/* 一言（ヒトコト） */}
-        const hitokotoJs = `function getYiyan(){
-                                $.getJSON("https://v1.hitokoto.cn/", function (data) {
-                                if(data){
-                                    $('#hitokoto').html("");
-                                    $('#hitokoto').append("<strong style='color: #3273dc;'>"+data.hitokoto+"</strong>"+
-                                    "<p>"+"${hitokotoFrom}《"+data.from+"》</p><p>${hitokotoProvider}-"+data.creator+"</p>");
-                                }});}
-                                $(function (){getYiyan();$('#hitokoto').click(function(){getYiyan();})});`;
 
         return <div class="card widget" data-type="profile">
             <div class="card-content">
@@ -96,7 +84,6 @@ class Profile extends Component {
                 {hasHitokoto == undefined || hasHitokoto ? <div>
                     <hr />
                     <p id="hitokoto">一言（ヒトコト）</p>
-                    <script type="text/javascript" dangerouslySetInnerHTML={{ __html: hitokotoJs }} defer={true}></script>
                 </div> : null}
                 
             </div>
@@ -174,8 +161,6 @@ Profile.Cacheable = cacheComponent(Profile, 'widget.profile', props => {
         followLink: follow_link ? url_for(follow_link) : undefined,
         followTitle: __('widget.follow'),
         socialLinks,
-        hitokotoFrom: __('widget.hitokoto_from'),
-        hitokotoProvider: __('widget.hitokoto_provider'),
         hasHitokoto: has_hitokoto
     };
 });

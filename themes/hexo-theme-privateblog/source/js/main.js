@@ -136,4 +136,19 @@
         $mask.on('click', toggleToc);
         $('.navbar-main .catalogue').on('click', toggleToc);
     }
+
+    // hitokoto
+    function getHitokoto() {
+        $.getJSON("https://v1.hitokoto.cn/", function (data) {
+            if (data) {
+                $('#hitokoto').html("");
+                $('#hitokoto').append("<strong style='color: #3273dc;'>" + data.hitokoto + "</strong>" + "<p>" + "《" + data.from + "》</p>");
+            }
+        });
+    }
+    
+    const $hitokotoClick = $('#hitokoto');
+    $hitokotoClick.on('click', getHitokoto);
+    getHitokoto();
+
 }(jQuery, window.moment, window.ClipboardJS, window.IcarusThemeSettings));
