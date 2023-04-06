@@ -44,6 +44,7 @@ class Footer extends Component {
                                 dangerouslySetInnerHTML={{ __html: visitorCounterTitle }}></span> : null}
                         </p>
                         {copyright ? <p class="is-size-7" dangerouslySetInnerHTML={{ __html: copyright }}></p> : null}
+                        <p class="is-size-7">如有侵权, 联系删除</p>
                     </div>
                     <div class="level-end">
                         {Object.keys(links).length ? <div class="field has-addons">
