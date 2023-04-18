@@ -7,11 +7,11 @@ categories: [UE4]
 
 引擎版本 4.21
 
-修改枚举（EMouseCursor）对应的光标样式
+修改枚举（EMouseCursor）对应的鼠标样式
 
 <!-- more -->
 
-EMouseCursor 在 ICurves 中声明，FWindowsCursor 构造函数中加载对应光标样式
+EMouseCursor 在 ICurves 中声明，FWindowsCursor 构造函数中加载对应鼠标样式
 
 	namespace EMouseCursor
 	{
@@ -84,7 +84,7 @@ EMouseCursor 在 ICurves 中声明，FWindowsCursor 构造函数中加载对应�
 
 	if (PlatformApplication->IsValid())
 	{
-		// 加载鼠标光标样式，文件格式 .cur
+		// 加载鼠标鼠标样式，文件格式 .cur
 		HCURSOR CursorHandle = LoadCursorFromFile((LPCTSTR)*CurPath);
 
 		// 修改鼠标样式，修改方式跟上面不同
