@@ -90,3 +90,5 @@ EMouseCursor 在 ICurves 中声明，FWindowsCursor 构造函数中加载对应�
 		// 修改鼠标样式，修改方式跟上面不同
 		PlatformApplication->Cursor->SetTypeShape(EMouseCursor::EyeDropper, CursorHandle);
 	}
+
+	打包 : .cur 打包进 pak 是加载不出来的，或者打包不进 pak. 为了打包后能加载出来，在 ProjectSettings->Packaging->Additional Non-Asset Directories To Copy 设置存放 .cur  的文件, Copy到打包后的相对文件目录下
